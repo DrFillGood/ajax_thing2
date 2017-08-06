@@ -1,0 +1,87 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"><link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('#get-another-quote-button').on('click', function(e) {
+    console.log("test");
+    e.preventDefault();
+    $.ajax( {
+      url: 'https://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=xml&lang=en',
+      success: function(data) {
+        console.log("test2");
+      },
+      cache: false,
+      error: function (xhr, ajaxOptions, thrownError) {
+        
+        console.log("test3");
+        console.log(xhr.status);
+      }
+    });
+  });
+});
+  
+
+</script>
+<style>
+body{
+  background-color:black;
+}
+h1{
+  color: white;
+  font-family: "Helvetica";
+  font-size: 50px;
+}
+p{
+  color: white;
+  font-family: "Helvetica";
+  font-style: italic;
+  font-size: 20px;
+}
+img{
+  padding: 15px;
+}
+.quotes{
+  background-color: blue;
+  width: 33%;
+  margin-right: auto;
+  margin-left: auto;
+  border-color: white;
+  border-style: solid;
+  margin-top: 20px;
+  border-radius: 5px;
+  color: white;
+  padding: 20px;
+  height: auto;
+}
+.quotes{
+  font-size:30px;
+}
+.author{
+  font-size:20px;
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+<div class = "container-fluid text-center">
+  <h1> Random Quote Generator</h1>
+  <p>Inspiring Quotes Not By Steve Urkel</p>
+  <img src="http://cdn.hark.com/images/000/001/560/1560/original.jpg"/>
+  <br/>
+  <button class="btn btn-default" id="get-another-quote-button">New Quote</button>
+  <a href="#" class="btn btn-default" id="tweet">Tweet It</a>
+  
+  
+  <div class ="quotes text-center">
+    <span class = "quote"></span>
+    <br/>
+    <span class = "author"></span>
+  </div>
+  
+  
+</div>
+
+</body>
+</html>
